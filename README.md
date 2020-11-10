@@ -17,7 +17,9 @@ This is a custom version of Wii Shop Extension called Advanced Wii Shop Extensio
 ## Planned Features
 
 Custom Music
+
 Link Editing
+
 Assigning Songs to Links
 
 **This is a work in progress and some planned features may be scrapped.**
