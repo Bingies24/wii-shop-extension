@@ -12,7 +12,7 @@ The extension only requires two permissions: [Tabs](https://developer.mozilla.or
 
 -----------------------------------------------------------------------------------------------------------------------
 
-This is a custom version of Wii Shop Extension called Advanced Wii Shop Extension which mainly adds a music selection menu by @2zqa as well as new songs, more links, and more.
+This is a custom version of Wii Shop Extension called Advanced Wii Shop Extension which mainly adds a music selection menu by [@2zqa](https://github.com/2zqa) as well as new songs, more links, and more.
 
 ## Planned Features
 
