@@ -12,7 +12,7 @@ The extension only requires two permissions: [Tabs](https://developer.mozilla.or
 
 -----------------------------------------------------------------------------------------------------------------------
 
-This is a custom version of Wii Shop Extension called Advanced Wii Shop Extension which mainly adds a music selection menu by [@2zqa](https://github.com/2zqa) as well as new songs, more links, and more.
+This is a custom version of Wii Shop Extension called Advanced Wii Shop Extension which mainly adds a music selection menu, as well as new songs, more links, and more.
 
 ## Planned Features
 
@@ -23,3 +23,13 @@ Link Editing
 Assigning Songs to Links
 
 **This is a work in progress and some planned features may be scrapped.**
+
+-----------------------------------------------------------------------------------------------------------------------
+
+## Credits
+
+[@corbindavenport](https://github.com/corbindavenport) for making the original extension.
+
+[@2zqa](https://github.com/2zqa) for the selection menu.
+
+[BedrockSolid](https://www.youtube.com/c/BedrockSolid/) for the DSi Shop Theme Remaster.
