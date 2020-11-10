@@ -4,39 +4,68 @@ const shopIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADD
 // Set MediaSession API info for Chrome media player popup
 if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
-        title: 'Wii Shop Channel Theme',
-        artist: 'Nintendo',
-        artwork: [
-            { src: shopIcon, sizes: '128x128', type: 'image/png' }
-        ]
+        title: '',
+        artist: '',
+        artwork: [{
+            src: shopIcon,
+            sizes: '128x128',
+            type: 'image/png'
+        }]
     })
 }
 
-// Creat audio object
-var themeAudio = new Audio(chrome.extension.getURL('wii-shop-theme.ogg'))
-themeAudio.volume = 0.5
-themeAudio.loop = true
+var currentSong = ''
+
+// Create audio object
+themeAudio = null;
+setAudio('wii-shop-theme')
 
 // Detect new page loads in active tab, if the domain matches a shopping site, play music
-chrome.tabs.onUpdated.addListener(function (tabId, changeInfo) {
-        chrome.tabs.query({ active: true, lastFocusedWindow: true }, function (tabs) {
-            var url = new URL(tabs[0].url)
-            var domain = url.hostname.toString().replace('www.','')
-            console.log(domain)
-            if (siteList.includes(domain)) {
-                themeAudio.play()
-            } else {
-                themeAudio.pause()
-            }
-        })
+chrome.tabs.onUpdated.addListener(function(tabId, changeInfo) {
+    updateSongPlayStatus()
 })
+
+function updateSongPlayStatus() {
+    chrome.tabs.query({
+        active: true,
+        lastFocusedWindow: true
+    }, function(tabs) {
+        var url = new URL(tabs[0].url)
+        var domain = url.hostname.toString().replace('www.', '')
+        // console.log(domain)
+        if (siteList.includes(domain)) {
+            themeAudio.play()
+        } else {
+            themeAudio.pause()
+        }
+    })
+}
+
+function setAudio(songName) {
+    currentSong = songName
+    themeAudio.src = chrome.extension.getURL(songName + '.ogg')
+    themeAudio.volume = 0.5
+    themeAudio.loop = true
+}
+
+function getCurrentSong() {
+    return currentSong
+}
+
+function replaceAudio(songName) {
+    themeAudio.pause()
+    themeAudio.currentTime = 0
+
+    setAudio(songName)
+    updateSongPlayStatus()
+}
 
 // Show notification on extension install
 chrome.runtime.onInstalled.addListener(function() {
     chrome.notifications.create({
         'type': 'basic',
         'iconUrl': chrome.extension.getURL('img/icon128.png'),
-        'title': 'Wii Shop Music extension installed!',
-        'message': 'The Wii Shop theme will now play when you visit shopping websites.'
-      })
+        'title': 'Advanced Wii Shop Music extension installed!',
+        'message': 'The default (Wii Shop) theme will now play when you visit shopping websites, and any others you put in the list.'
+    })
 })

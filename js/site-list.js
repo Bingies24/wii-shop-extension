@@ -41,5 +41,7 @@ const siteList = [
     'gearbest.com',
     'flipkart.com',
     'qvc.com',
-    'shopping.google.com'
+    'shopping.google.com',
+    'nintendo.com',
+    'wii.com'
 ]
