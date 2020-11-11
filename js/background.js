@@ -4,8 +4,8 @@ const shopIcon = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAIAAAACACAYAAADD
 // Set MediaSession API info for Chrome media player popup
 if ('mediaSession' in navigator) {
     navigator.mediaSession.metadata = new MediaMetadata({
-        title: '',
-        artist: '',
+        title: 'Wii Shop Extension',
+        artist: 'Nintendo or someone else idk',
         artwork: [{
             src: shopIcon,
             sizes: '128x128',
@@ -58,7 +58,7 @@ chrome.tabs.onActivated.addListener(function(activeInfo) {
   
 function setAudio(songName) {
     currentSong = songName
-    themeAudio.src = (chrome.extension.getURL(songName + '.ogg'))
+    themeAudio.src = new Audio(chrome.extension.getURL(songName + '.ogg'))
     themeAudio.volume = 0.5
     themeAudio.loop = true
 }
