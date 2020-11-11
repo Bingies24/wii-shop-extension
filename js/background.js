@@ -41,6 +41,21 @@ function updateSongPlayStatus() {
     })
 }
 
+// Detect shopping tab becoming inactive/closed, if the domain matches a shopping site, play music
+chrome.tabs.onActivated.addListener(function(activeInfo) {
+    chrome.tabs.get(activeInfo.tabId, function(tab) {
+      var url = new URL(tab.url)
+      var domain = url.hostname.toString().replace('www.','')
+      console.log(domain)
+      if (!siteList.includes(domain)) {
+          themeAudio.pause()
+      }
+      else {
+        themeAudio.play()
+      }
+    })
+  })
+  
 function setAudio(songName) {
     currentSong = songName
     themeAudio.src = NewAudio(chrome.extension.getURL(songName + '.ogg'))
