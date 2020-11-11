@@ -43,7 +43,7 @@ function updateSongPlayStatus() {
 
 function setAudio(songName) {
     currentSong = songName
-    themeAudio.src = chrome.extension.getURL(songName + '.ogg')
+    themeAudio.src = NewAudio(chrome.extension.getURL(songName + '.ogg'))
     themeAudio.volume = 0.5
     themeAudio.loop = true
 }
